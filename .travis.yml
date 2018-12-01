@@ -1,0 +1,27 @@
+os: linux
+dist: trusty
+sudo: required
+language: python
+python:
+  - "3.6"
+services:
+  - docker
+install:
+  - pip install pre-commit
+stages:
+  - lint
+jobs:
+  include:
+    - stage: lint
+      script:
+        - pre-commit run --all-files
+    - stage: test:unit
+      script:
+        - docker-compose -f "docker-compose.test.yml" run docupload sh -c "pipenv run py.test"
+# before_install:
+#   - pip install pre-commit
+#   - pre-commit run --all-files
+# install:
+#   - docker-compose -f "docker-compose.test.yml" build
+# script:
+#   - docker-compose -f "docker-compose.test.yml" run -e COVERALLS_REPO_TOKEN="$COVERALLS_REPO_TOKEN" -e TRAVIS_JOB_ID="$TRAVIS_JOB_ID" -e TRAVIS_BRANCH="$TRAVIS_BRANCH" cheddar sh -c "pipenv run py.test && pipenv run coveralls"
