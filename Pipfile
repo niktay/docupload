@@ -7,9 +7,10 @@ verify_ssl = true
 pre-commit = "*"
 pytest = "*"
 pytest-django = "*"
+autopep8 = "*"
 
 [packages]
-django = "*"
+django = "==2.0"
 djangorestframework = "*"
 
 [requires]
