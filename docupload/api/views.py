@@ -1,3 +1,8 @@
-from django.shortcuts import render  # noqa: F401
+from api.models import Confidentiality
+from api.serializers import ConfidentialitySerializer
+from rest_framework import viewsets
 
-# Create your views here.
+
+class ConfidentialityViewSet(viewsets.ModelViewSet):
+    queryset = Confidentiality.objects.all()
+    serializer_class = ConfidentialitySerializer

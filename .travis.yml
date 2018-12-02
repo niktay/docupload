@@ -17,7 +17,7 @@ jobs:
         - pre-commit run --all-files
     - stage: test:unit
       script:
-        - docker-compose -f "docker-compose.test.yml" run docupload sh -c "pipenv run py.test"
+        - docker-compose -f "docker-compose.test.yml" run docupload sh -c "pipenv run python manage.py test"
 # before_install:
 #   - pip install pre-commit
 #   - pre-commit run --all-files

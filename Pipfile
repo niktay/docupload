@@ -5,13 +5,12 @@ verify_ssl = true
 
 [dev-packages]
 pre-commit = "*"
-pytest = "*"
-pytest-django = "*"
 autopep8 = "*"
 
 [packages]
 django = "==2.0"
 djangorestframework = "*"
+coreapi = "*"
 
 [requires]
 python_version = "3.7"

@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Trackable(models.Model):
-    total_docs = models.PositiveIntegerField()
+    total_docs = models.PositiveIntegerField(default=0)
 
     class Meta:
         abstract = True
@@ -14,6 +14,9 @@ class FileType(Trackable):
 
 class Confidentiality(Trackable):
     name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f'{self.name} - {self.total_docs}'
 
 
 class Language(Trackable):
