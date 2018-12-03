@@ -11,6 +11,9 @@ class Trackable(models.Model):
 class FileType(Trackable):
     name = models.CharField(max_length=255)
 
+    def __str__(self):
+        return f'{self.name} - {self.total_docs}'
+
 
 class Confidentiality(Trackable):
     name = models.CharField(max_length=255)
