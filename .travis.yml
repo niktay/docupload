@@ -1,9 +1,9 @@
 os: linux
-dist: trusty
+dist: xenial
 sudo: required
 language: python
 python:
-  - "3.6"
+  - "3.7"
 services:
   - docker
 install:
@@ -17,11 +17,4 @@ jobs:
         - pre-commit run --all-files
     - stage: test:unit
       script:
-        - docker-compose -f "docker-compose.test.yml" run docupload sh -c "pipenv run python manage.py test"
-# before_install:
-#   - pip install pre-commit
-#   - pre-commit run --all-files
-# install:
-#   - docker-compose -f "docker-compose.test.yml" build
-# script:
-#   - docker-compose -f "docker-compose.test.yml" run -e COVERALLS_REPO_TOKEN="$COVERALLS_REPO_TOKEN" -e TRAVIS_JOB_ID="$TRAVIS_JOB_ID" -e TRAVIS_BRANCH="$TRAVIS_BRANCH" cheddar sh -c "pipenv run py.test && pipenv run coveralls"
+        - docker-compose -f "docker-compose.test.yml" run -e COVERALLS_REPO_TOKEN="$COVERALLS_REPO_TOKEN" -e TRAVIS_JOB_ID="$TRAVIS_JOB_ID" -e TRAVIS_BRANCH="$TRAVIS_BRANCH" docupload sh -c "pipenv run python -m coverage run --source='.' manage.py test && pipenv run coveralls"

@@ -6,6 +6,8 @@ verify_ssl = true
 [dev-packages]
 pre-commit = "*"
 autopep8 = "*"
+coverage = "*"
+python-coveralls = "*"
 
 [packages]
 django = "==2.0"

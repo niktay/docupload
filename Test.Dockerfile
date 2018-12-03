@@ -6,6 +6,7 @@ WORKDIR /app
 ADD docupload/ /app
 ADD ./Pipfile /app/Pipfile
 ADD ./Pipfile.lock /app/Pipfile.lock
+ADD ./.coveragerc /app/.coveragerc
 
 RUN python3 -m pip install pipenv
 RUN pipenv install --dev --ignore-pipfile
