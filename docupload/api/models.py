@@ -26,6 +26,9 @@ class Language(Trackable):
     name = models.CharField(max_length=255)
     short = models.CharField(max_length=64)
 
+    def __str__(self):
+        return f'{self.name} - {self.short} - {self.total_docs}'
+
 
 class Document(models.Model):
     name = models.CharField(max_length=255)
